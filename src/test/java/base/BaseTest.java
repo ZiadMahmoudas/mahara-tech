@@ -14,13 +14,17 @@ public class BaseTest {
     {
         driver = new ChromeDriver();
         driver.manage().window().fullscreen();
-
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
     }
     @AfterMethod
-    public void tearDown()
-    {
-        if(driver != null)
-        driver.quit();
+    public void tearDown() {
+        if (driver != null) {
+            try {
+                Thread.sleep(8000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            driver.quit();
+        }
     }
 }
