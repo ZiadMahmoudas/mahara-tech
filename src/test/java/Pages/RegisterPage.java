@@ -80,12 +80,12 @@ public class RegisterPage {
         profileFieldID.clear();
         profileFieldID.sendKeys(nationalId);
     }
-    public void enterLinkedIn(String linkedin) {
-        if (!LinkedinField.isEmpty()) {
-            LinkedinField.get(0).clear();
-            LinkedinField.get(0).sendKeys(linkedin);
-        }
-    }
+//    public void enterLinkedIn(String linkedin) {
+//        if (!LinkedinField.isEmpty()) {
+//            LinkedinField.get(0).clear();
+//            LinkedinField.get(0).sendKeys(linkedin);
+//        }
+//    }
     public void selectCountryByValue(String country) {
         Select select = new Select(countryDropdown);
         select.selectByValue(country);
@@ -124,6 +124,14 @@ public class RegisterPage {
     @FindBy(id = "id_error_lastname")
     private WebElement lastNameErrorMessage;
 
+    @FindBy(tagName = "body")
+    private WebElement bodyText;
+
+    public boolean isRegistrationConfirmationDisplayed() {
+        String text = bodyText.getText();
+        return text.contains("An email should have been sent to your address")
+                && text.contains("It contains easy instructions to complete your registration");
+    }
     public void register(RegisterData data) {
         enterUsername(data.getUsername());
         enterPassword(data.getPassword());
@@ -133,7 +141,7 @@ public class RegisterPage {
         enterLastName(data.getLastName());
         enterOptionalCity(data.getCity());
         enterNationalId(data.getNationalId());
-        enterLinkedIn(data.getLinkedin());
+//        enterLinkedIn(data.getLinkedin());
         selectCountryByValue(data.getCountryCode());
         selectUniversity(data.getUniversity());
         selectFaculty(data.getFaculty());

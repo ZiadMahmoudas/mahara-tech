@@ -1,12 +1,24 @@
 package tests;
 
 import DATA.RegisterData;
+
 import Pages.RegisterPage;
 import base.BaseTest;
+import listeners.TestListener;
 import org.testng.Assert;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
+import java.util.Random;
+@Listeners(TestListener.class)
 public class RegisterTest extends BaseTest {
+
+    private String generateEgyptianNationalId() {
+        String prefix = "305040501";
+        int randomLastFive = 10000 + new Random().nextInt(90000);
+        return prefix + randomLastFive;
+    }
+    String nationalId = generateEgyptianNationalId();
 
     @Test
     public void userCanRegisterWithValidData() {
@@ -14,16 +26,32 @@ public class RegisterTest extends BaseTest {
 
         RegisterPage registerPage = new RegisterPage(driver);
 
+//        RegisterData user = new RegisterData.Builder()
+//                .username("testuser12345")
+//                .password("Test@123")
+//                .email("kfkfjfk905@gmail.com")
+//                .confirmEmail("kfkfjfk905@gmail.com")
+//                .firstName("Rama")
+//                .lastName("Group")
+//                .city("Cairo")
+//                .nationalId("30504050102599")
+//                .linkedin("https://linkedin.com/in/test")
+//                .countryCode("EG")
+//                .university("6th of October University")
+//                .faculty("Academy of Arts")
+//                .build();
+
+        String unique = String.valueOf(System.currentTimeMillis());
+
         RegisterData user = new RegisterData.Builder()
-                .username("testuser12345")
+                .username("testuser" + unique)
                 .password("Test@123")
-                .email("kfkfjfk905@gmail.com")
-                .confirmEmail("kfkfjfk905@gmail.com")
+                .email("test" + unique + "@gmail.com")
+                .confirmEmail("test" + unique + "@gmail.com")
                 .firstName("Rama")
                 .lastName("Group")
                 .city("Cairo")
-                .nationalId("30504050102599")
-                .linkedin("https://linkedin.com/in/test")
+                .nationalId(nationalId)
                 .countryCode("EG")
                 .university("6th of October University")
                 .faculty("Academy of Arts")
@@ -31,8 +59,11 @@ public class RegisterTest extends BaseTest {
 
         registerPage.register(user);
         String currentUrl = registerPage.getCurrentUrl();
-        Assert.assertFalse(currentUrl.contains("signup.php"), "التسجيل فشل والموقع لسه واقف في صفحة التسجيل، العنوان الحالي: " + currentUrl);
-
+        System.out.println("Current URL: " + currentUrl);
+        Assert.assertTrue(
+                registerPage.isRegistrationConfirmationDisplayed(),
+                "رسالة تأكيد التسجيل وإرسال الإيميل لم تظهر"
+        );
     }
     @Test
     public void showsErrorsWhenFieldsAreEmpty() {
