@@ -18,8 +18,8 @@ public class RegisterPage {
 //    Attribute fields origin
     @FindBy(id="id_username")
     private WebElement usernameField;
-    @FindBy(id="id_password")
-    private  WebElement passwordField;
+    @FindBy(id = "id_password")
+    private WebElement passwordField;
     @FindBy(name = "email")
     private WebElement emailField;
     @FindBy(id = "id_email2")
