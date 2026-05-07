@@ -1,31 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
 
-<suite name="Suite1" verbose="1">
-<<<<<<< Updated upstream
-    <test name="Nopackage">
-        <classes>
-            <class name="NoPackageTest"/>
-        </classes>
-    </test>
+<suite name="Final Project Suite" verbose="1">
 
-    <test name="Regression1">
-        <classes>
-            <class name="test.sample.ParameterSample"/>
-            <class name="test.sample.ParameterTest"/>
-=======
     <listeners>
         <listener class-name="listeners.TestListener"/>
     </listeners>
-
-<!--    <test name="Registration Tests">-->
-<!--        <classes>-->
-<!--            <class name="tests.RegisterTest"/>-->
-<!--        </classes>-->
-<!--    </test>-->
-    <test name="Login Tests">
+    <test name="Full Regression Suite">
         <classes>
+            <class name="tests.RegisterTest"/>
             <class name="tests.LoginTest"/>
->>>>>>> Stashed changes
         </classes>
     </test>
+
+
 </suite>

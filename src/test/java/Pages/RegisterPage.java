@@ -1,12 +1,16 @@
 package Pages;
 
 import DATA.RegisterData;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.time.Duration;
 import java.util.List;
 
 public class RegisterPage {
@@ -40,9 +44,9 @@ public class RegisterPage {
     private WebElement universityField;
     @FindBy(id="id_profile_field_fac")
     private WebElement facultyField;
-    @FindBy(xpath = "//button[input[@value='Create my new account']]")
+    @FindBy(id = "id_submitbutton")
     private WebElement createAccountButton;
-    @FindBy(xpath = "//button[input[@value='Cancel']]")
+    @FindBy(id = "id_cancel")
     private WebElement cancelButton;
 //    Method to interact with the form fields original
     public void enterUsername(String username) {
@@ -98,7 +102,19 @@ public class RegisterPage {
         select.selectByVisibleText(faculty);
     }
     public void clickCreateAccount() {
-        createAccountButton.click();
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
+
+        WebElement button = wait.until(
+                ExpectedConditions.elementToBeClickable(createAccountButton)
+        );
+
+        ((JavascriptExecutor) driver).executeScript(
+                "arguments[0].scrollIntoView({block: 'center'});", button
+        );
+
+        ((JavascriptExecutor) driver).executeScript(
+                "arguments[0].click();", button
+        );
     }
     public void clickCancel() {
         cancelButton.click();
