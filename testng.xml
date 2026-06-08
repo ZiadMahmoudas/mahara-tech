@@ -6,12 +6,21 @@
     <listeners>
         <listener class-name="listeners.TestListener"/>
     </listeners>
-    <test name="Full Regression Suite">
+    <test name="Register Tests">
         <classes>
             <class name="tests.RegisterTest"/>
+        </classes>
+    </test>
+    <test name="Login Tests">
+        <classes>
             <class name="tests.LoginTest"/>
         </classes>
     </test>
 
+    <test name="Enrol Tests">
+        <classes>
+            <class name="tests.EnrollTest"/>
+        </classes>
+    </test>
 
 </suite>

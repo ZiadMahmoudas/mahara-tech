@@ -4,7 +4,6 @@ public class LoginData {
     private String username;
     private String password;
 
-    // Constructor private عشان نجبره يستخدم الـ Builder
     private LoginData(Builder builder) {
         this.username = builder.username;
         this.password = builder.password;
@@ -14,10 +13,9 @@ public class LoginData {
     public String getPassword() { return password; }
 
     public static class Builder {
-        private String username; // الـ Variables نفسها تفضل private عادي
+        private String username;
         private String password;
 
-        // الميثود دي لازم تكون public عشان التست يشوفها
         public Builder username(String username) {
             this.username = username;
             return this;

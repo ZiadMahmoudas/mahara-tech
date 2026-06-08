@@ -3,26 +3,16 @@ package tests;
 import DATA.RegisterData;
 import Pages.RegisterPage;
 import base.BaseTest;
-import listeners.TestListener;
 import org.testng.Assert;
-import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 import java.util.Random;
 
-@Listeners(TestListener.class)
 public class RegisterTest extends BaseTest {
 
     private String generateRandomNationalId() {
         Random random = new Random();
-
-        // لازم يبدأ بـ 3050
-        String prefix = "3050";
-
-        // نكمّل باقي الـ 14 رقم
-        // 3050 = 4 digits
-        // محتاجين 10 digits كمان
-        StringBuilder nationalId = new StringBuilder(prefix);
+        StringBuilder nationalId = new StringBuilder("3050");
 
         for (int i = 0; i < 10; i++) {
             nationalId.append(random.nextInt(10));
@@ -51,11 +41,10 @@ public class RegisterTest extends BaseTest {
     }
 
     @Test
-    public void userCanRegisterWithValidData() throws InterruptedException {
+    public void userCanRegisterWithValidData() {
         driver.get("https://maharatech.gov.eg/login/signup.php");
 
         RegisterPage registerPage = new RegisterPage(driver);
-
         RegisterData user = generateRandomUser();
 
         System.out.println("Username: " + user.getUsername());
@@ -64,26 +53,47 @@ public class RegisterTest extends BaseTest {
 
         registerPage.register(user);
 
-        Thread.sleep(5000);
-
-        Assert.assertTrue(registerPage.getCurrentUrl().contains("signup"));
+        Assert.assertTrue(
+                registerPage.isRegistrationResultDisplayed(),
+                "Registration result/confirmation message was not displayed. Current URL: " + registerPage.getCurrentUrl()
+        );
     }
 
     @Test
-    public void showsErrorsWhenFieldsAreEmpty() throws InterruptedException {
+    public void showsErrorsWhenFieldsAreEmpty() {
         driver.get("https://maharatech.gov.eg/login/signup.php");
 
         RegisterPage registerPage = new RegisterPage(driver);
-
         registerPage.clickCreateAccount();
 
-        Thread.sleep(5000);
+        Assert.assertTrue(
+                registerPage.getUsernameErrorMessage().contains("Missing username"),
+                "Username error message was not displayed correctly"
+        );
 
-        Assert.assertEquals(registerPage.getUsernameErrorMessage(), "- Missing username");
-        Assert.assertEquals(registerPage.getPasswordErrorMessage(), "- Missing password");
-        Assert.assertEquals(registerPage.getEmailErrorMessage(), "- Missing email address");
-        Assert.assertEquals(registerPage.getConfirmEmailErrorMessage(), "- Missing email address");
-        Assert.assertEquals(registerPage.getFirstNameErrorMessage(), "- Missing given name");
-        Assert.assertEquals(registerPage.getLastNameErrorMessage(), "- Missing last name");
+        Assert.assertTrue(
+                registerPage.getPasswordErrorMessage().contains("Missing password"),
+                "Password error message was not displayed correctly"
+        );
+
+        Assert.assertTrue(
+                registerPage.getEmailErrorMessage().contains("Missing email address"),
+                "Email error message was not displayed correctly"
+        );
+
+        Assert.assertTrue(
+                registerPage.getConfirmEmailErrorMessage().contains("Missing email address"),
+                "Confirm email error message was not displayed correctly"
+        );
+
+        Assert.assertTrue(
+                registerPage.getFirstNameErrorMessage().contains("Missing given name"),
+                "First name error message was not displayed correctly"
+        );
+
+        Assert.assertTrue(
+                registerPage.getLastNameErrorMessage().contains("Missing last name"),
+                "Last name error message was not displayed correctly"
+        );
     }
 }
