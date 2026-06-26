@@ -3,7 +3,7 @@
 <table>
   <tr>
     <td align="center" width="50%">
-      <a href="[https://www.itc-colleague.com/](https://depi.gov.eg/)">
+      <a href="https://depi.gov.eg/">
       <img src="./AutomationFinal/mahara-tech/DigitalEgypt.png" alt="Digital Egypt Pioneers Initiative" width="180" />
       </a>
     </td>
@@ -218,7 +218,7 @@ drivers/chromedriver.exe
 <table>
   <tr>
     <td align="center" width="50%">
-          <a href="[https://www.itc-colleague.com/](https://depi.gov.eg/)">
+          <a href="https://depi.gov.eg/">
       <img src="./AutomationFinal/mahara-tech/DigitalEgypt.png" alt="Digital Egypt Pioneers Initiative" width="180" />
       </a>
       <br><br>
