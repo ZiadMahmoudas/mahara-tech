@@ -214,12 +214,12 @@ drivers/chromedriver.exe
 <table>
   <tr>
     <td align="center" width="50%">
-      <img src="./DigitalEgypt.png" alt="Digital Egypt Pioneers Initiative" width="160" />
+      <img src="./AutomationFinal/mahara-tech/DigitalEgypt.png" alt="Digital Egypt Pioneers Initiative" width="180" />
       <br><br>
       <strong>Digital Egypt Pioneers Initiative</strong>
     </td>
     <td align="center" width="50%">
-      <img src="./ITC.png" alt="ITC Colleague" width="160" />
+      <img src="./AutomationFinal/mahara-tech/ITC.png" alt="ITC Colleague" width="180" />
       <br><br>
       <strong>ITC Colleague</strong>
     </td>
