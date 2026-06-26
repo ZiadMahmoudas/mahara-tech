@@ -3,10 +3,10 @@
 <table>
   <tr>
     <td align="center" width="50%">
-      <img src="./DigitalEgypt.png" alt="Digital Egypt Pioneers Initiative" width="180" />
+      <img src="./AutomationFinal/mahara-tech/DigitalEgypt.png" alt="Digital Egypt Pioneers Initiative" width="180" />
     </td>
     <td align="center" width="50%">
-      <img src="./ITC.png" alt="ITC Colleague" width="180" />
+      <img src="./AutomationFinal/mahara-tech/ITC.png" alt="ITC Colleague" width="180" />
     </td>
   </tr>
 </table>
