@@ -3,10 +3,14 @@
 <table>
   <tr>
     <td align="center" width="50%">
+      <a href="[https://www.itc-colleague.com/](https://depi.gov.eg/)">
       <img src="./AutomationFinal/mahara-tech/DigitalEgypt.png" alt="Digital Egypt Pioneers Initiative" width="180" />
+      </a>
     </td>
     <td align="center" width="50%">
+         <a href="https://www.itc-colleague.com/">
       <img src="./AutomationFinal/mahara-tech/ITC.png" alt="ITC Colleague" width="180" />
+      </a>
     </td>
   </tr>
 </table>
