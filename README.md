@@ -244,4 +244,6 @@ It demonstrates how to design, organize, execute, and report automated test scen
 
 **Prepared as part of the Digital Egypt Pioneers Initiative and ITC Colleague activities.**
 
+### I loved working with my friend Yahya, who worked exclusively with me throughout the project and was a true partner in struggle. We will definitely collaborate on many more projects together.
+
 </div>
