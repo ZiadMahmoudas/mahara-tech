@@ -1,9 +1,9 @@
 <div align="center">
 
 <p>
-  <img src="docs/assets/rowad-misr-digital.png" alt="رواد مصر الرقمية" width="170" />
+  <img src="/DigitalEgypt.png" alt="رواد مصر الرقمية" width="170" />
   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-  <img src="docs/assets/itc-colleague.png" alt="ITC Colleague" width="170" />
+  <img src="/ITC.png" alt="ITC Colleague" width="170" />
 </p>
 
 # MaharaTech Automation Testing Project
