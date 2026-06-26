@@ -1,0 +1,316 @@
+{
+  "info": {
+    "_postman_id": "8c3a2771-0069-439e-a7ba-e8b9fe0e439a",
+    "name": "Edraik alias mahraTech",
+    "description": "<img src=\"https://content.pstmn.io/c9c5ad21-3de9-4336-b0a1-7e6540671980/U2NyZWVuc2hvdCAyMDI2LTA0LTI2IDExNTkxMS5wbmc=\" alt=\"Here%20View%20MVC%20Projcet\n<br>\" height=\"180\" width=\"362\"><img src=\"https://content.pstmn.io/61de4df0-6755-4a89-8a73-054398f011e8/U2NyZWVuc2hvdCAyMDI2LTA0LTI2IDExNTk0Mi5wbmc=\" alt=\"\" height=\"175\" width=\"346\">\n\n  \nThis project is Simulate for mahraTech because Not Found Request API , MaharaTech built in for mvc PHP\n\nProject Talks about:\n\n1-\n\n2-\n\n3-\n\n4-\n\n5-",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "41672765"
+  },
+  "item": [
+    {
+      "name": "Auth",
+      "item": [
+        {
+          "name": "Registration",
+          "item": [
+            {
+              "name": "Register - Valid",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "exec": [
+                      "pm.test(\"Status code is 200\",function(){\r",
+                      "    pm.response.to.have.status(200);\r",
+                      "})\r",
+                      "const jsonData = pm.response.json();\r",
+                      "pm.test(\"Registration success is true\",function(){\r",
+                      "    pm.expect(jsonData.success).to.eql(true);\r",
+                      "});\r",
+                      "pm.test(\"Response has redirect_url\",function(){\r",
+                      "pm.expect(jsonData.redirect_url).to.exist;\r",
+                      "});\r",
+                      "let randomEmail = `test_${Date.now()}@gmail.com`;\r",
+                      "pm.environment.set(\"email\", randomEmail);"
+                    ],
+                    "type": "text/javascript",
+                    "packages": {},
+                    "requests": {}
+                  }
+                },
+                {
+                  "listen": "prerequest",
+                  "script": {
+                    "exec": [
+                      ""
+                    ],
+                    "type": "text/javascript",
+                    "packages": {},
+                    "requests": {}
+                  }
+                }
+              ],
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "x-api-key",
+                    "value": "reqres_295b3a636a0f4f60bde460b58ff63ff9",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "key": "email",
+                      "value": "testuser1s23a@gmail.coms",
+                      "type": "text",
+                      "uuid": "1242d110-46a1-4971-80f6-525b8e4f352e"
+                    },
+                    {
+                      "key": "password",
+                      "value": "Test@123456",
+                      "type": "text",
+                      "uuid": "6ccc5774-ea71-4cb3-bab4-701b5bde9704"
+                    },
+                    {
+                      "key": "name",
+                      "value": "Ziad",
+                      "type": "text",
+                      "uuid": "0ab86560-34e6-4a6a-a60c-7f6b09a5b455"
+                    },
+                    {
+                      "key": "terms_of_service",
+                      "value": "true",
+                      "type": "text",
+                      "uuid": "83e2c0bc-dc3a-4859-af3c-6d8bed9ef50a"
+                    },
+                    {
+                      "key": "honor_code",
+                      "value": "true",
+                      "type": "text",
+                      "uuid": "7f87c479-ac0b-44e4-9094-68f4614731e6"
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "{{url_request}}/user_api/v1/account/registration/",
+                  "host": [
+                    "{{url_request}}"
+                  ],
+                  "path": [
+                    "user_api",
+                    "v1",
+                    "account",
+                    "registration",
+                    ""
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Register - Invalid &Duplicate Email",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "exec": [
+                      "pm.test(\"Status code is 409\",function(){\r",
+                      "    pm.response.to.have.status(409);\r",
+                      "})\r",
+                      "\r",
+                      "const jsonData = pm.response.json();\r",
+                      "\r",
+                      "pm.test(\"Email validation exists\",function(){\r",
+                      "    pm.expect(jsonData.email).to.exist;\r",
+                      "})\r",
+                      "pm.test(\"Duplicate email message appears\",function(){\r",
+                      "    pm.expect(jsonData.email[0].user_message).to.include(\"حسابًا موجودًا\")\r",
+                      "})"
+                    ],
+                    "type": "text/javascript",
+                    "packages": {},
+                    "requests": {}
+                  }
+                }
+              ],
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "key": "email",
+                      "value": "testuser1s23a@gmail.com",
+                      "type": "text",
+                      "uuid": "6766fc86-3739-4370-9641-104281d8e656"
+                    },
+                    {
+                      "key": "name",
+                      "value": "Test@123456",
+                      "type": "text",
+                      "uuid": "d14f7489-1640-4262-91ec-ab98e398ffbd"
+                    },
+                    {
+                      "key": "password",
+                      "value": "Ziad",
+                      "type": "text",
+                      "uuid": "25b19630-c6b7-4934-9695-90449a4befad"
+                    },
+                    {
+                      "key": "terms_of_service",
+                      "value": "true",
+                      "type": "text",
+                      "uuid": "7778b55e-2384-4ba8-98c1-0348dd777edb"
+                    },
+                    {
+                      "key": "honor_code",
+                      "value": "true",
+                      "type": "text",
+                      "uuid": "57d00d8c-3605-4837-bce0-9e2b6f2c47d1"
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "{{url_request}}/user_api/v1/account/registration/",
+                  "host": [
+                    "{{url_request}}"
+                  ],
+                  "path": [
+                    "user_api",
+                    "v1",
+                    "account",
+                    "registration",
+                    ""
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Register - Missing Password",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "exec": [
+                      "pm.test(\"Status code is 400\", function () {\r",
+                      "    pm.response.to.have.status(400);\r",
+                      "});\r",
+                      "\r",
+                      "const jsonData = pm.response.json();\r",
+                      "\r",
+                      "pm.test(\"Password validation exists\", function () {\r",
+                      "    pm.expect(jsonData.password).to.exist;\r",
+                      "});\r",
+                      "\r",
+                      "pm.test(\"Password required message appears\", function () {\r",
+                      "    pm.expect(jsonData.password[0].user_message).to.include(\"هذا الحقل مطلوب\");\r",
+                      "});"
+                    ],
+                    "type": "text/javascript",
+                    "packages": {},
+                    "requests": {}
+                  }
+                }
+              ],
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "key": "email",
+                      "value": "testuser1s23s@gmail.com",
+                      "type": "text",
+                      "uuid": "996e0a08-6397-4976-9341-b831618345aa"
+                    },
+                    {
+                      "key": "name",
+                      "value": "Ziad",
+                      "type": "text",
+                      "uuid": "8ca57545-fca3-440e-9da3-69d306d89db6"
+                    },
+                    {
+                      "key": "password",
+                      "value": "",
+                      "type": "text",
+                      "uuid": "67e7a690-46c6-4ae3-a497-1d340134a599"
+                    },
+                    {
+                      "key": "terms_of_service",
+                      "value": "true",
+                      "type": "text",
+                      "uuid": "e887266d-4a08-4c80-86e8-3940ecc0c449"
+                    },
+                    {
+                      "key": "honor_code",
+                      "value": "true",
+                      "type": "text",
+                      "uuid": "4c5ba685-daa7-41c3-a085-365088fac695"
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "{{url_request}}/user_api/v1/account/registration/",
+                  "host": [
+                    "{{url_request}}"
+                  ],
+                  "path": [
+                    "user_api",
+                    "v1",
+                    "account",
+                    "registration",
+                    ""
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "login",
+          "item": [
+            {
+              "name": "login",
+              "request": {
+                "auth": {
+                  "type": "noauth"
+                },
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{token}}",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "login",
+                  "host": [
+                    "login"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
